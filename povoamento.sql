@@ -60,11 +60,11 @@ insert into Items (id, tipo, nome, preco, quantidade) values (25, 'pacote', 'Lin
 insert into Items (id, tipo, nome, preco, quantidade) values (26, 'pacote', 'Line Advantage',4700, 7);
 insert into Items (id, tipo, nome, preco, quantidade) values (27, 'pacote', 'Line Urban',3200, 7);
 
-insert into Items (id, tipo, nome, preco, quantidade) values (28, 'jantes', '17\'\'',1200, 7);
-insert into Items (id, tipo, nome, preco, quantidade) values (29, 'jantes', '18\'\'',1400, 7);
-insert into Items (id, tipo, nome, preco, quantidade) values (30, 'jantes', '19\'\'',1600, 7);
-insert into Items (id, tipo, nome, preco, quantidade) values (31, 'jantes', '20\'\'',1800, 7);
-insert into Items (id, tipo, nome, preco, quantidade) values (32, 'jantes', '21\'\'',2000, 7);
+insert into Items (id, tipo, nome, preco, quantidade) values (28, 'jantes', '17', 1200, 7);
+insert into Items (id, tipo, nome, preco, quantidade) values (29, 'jantes', '18', 1400, 7);
+insert into Items (id, tipo, nome, preco, quantidade) values (30, 'jantes', '19', 1600, 7);
+insert into Items (id, tipo, nome, preco, quantidade) values (31, 'jantes', '20', 1800, 7);
+insert into Items (id, tipo, nome, preco, quantidade) values (32, 'jantes', '21', 2000, 7);
 
 insert into Items (id, tipo, nome, preco, quantidade) values (33, 'pneus', 'Continental',1000, 7);
 insert into Items (id, tipo, nome, preco, quantidade) values (34, 'pneus', 'Goodyear',900, 7);
@@ -73,14 +73,14 @@ insert into Items (id, tipo, nome, preco, quantidade) values (36, 'pneus', 'Brid
 insert into Items (id, tipo, nome, preco, quantidade) values (37, 'pneus', 'Firestone',2000, 7);
 insert into Items (id, tipo, nome, preco, quantidade) values (38, 'pneus', 'Uniroyal',700, 7);
 
-insert into Items (id, tipo, nome, preco, quantidade) values (39, 'Tecido Move Antracite', 'Uniroyal',1200, 7);
-insert into Items (id, tipo, nome, preco, quantidade) values (40, 'Pele Dakota reto', 'Uniroyal',900, 7);
-insert into Items (id, tipo, nome, preco, quantidade) values (41, 'Pele Dakota Castanho', 'Uniroyal',1000, 7);
+insert into Items (id, tipo, nome, preco, quantidade) values (39, 'estofos', 'Tecido Move Antracite', 1200, 7);
+insert into Items (id, tipo, nome, preco, quantidade) values (40, 'estofos', 'Pele Dakota preto', 900, 7);
+insert into Items (id, tipo, nome, preco, quantidade) values (41, 'estofos', 'Pele Dakota Castanho',1000, 7);
 insert into Items (id, tipo, nome, preco, quantidade) values (42, 'estofos', 'Tecido Corner preto',2500, 7);
 insert into Items (id, tipo, nome, preco, quantidade) values (43, 'estofos', 'Tecido/Pele prata',4600, 7);
 
 insert into Items (id, tipo, nome, preco, quantidade) values (44, 'frisos', 'Prata Satin mate',1000, 7);
-insert into Items (id, tipo, nome, preco, quantidade) values (45, 'frisos', 'Alumínio Escolvado',1100, 7);
+insert into Items (id, tipo, nome, preco, quantidade) values (45, 'frisos', 'Alumínio Escovado',1100, 7);
 insert into Items (id, tipo, nome, preco, quantidade) values (46, 'frisos', 'Alumínio Hexagon',2000, 7);
 insert into Items (id, tipo, nome, preco, quantidade) values (47, 'frisos', 'Branco Acrílico',6000, 7);
 

@@ -6,6 +6,7 @@
 package configuracaoc.Data;
 
 import configuracaoc.Business.Item;
+import configuracaoc.Business.Pacote;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,9 +21,9 @@ import java.util.logging.Logger;
  *
  * @author PedroRibeiro
  */
-public class ItemDAO implements Map<String, Item> {
+public class PacoteDAO implements Map<String, Pacote> {
 
-    Connection conn;
+    private Connection conn;
     
     @Override
     public int size() {
@@ -45,40 +46,36 @@ public class ItemDAO implements Map<String, Item> {
     }
 
     @Override
-    public Item get(Object key) {
-        System.out.println("cheguei ao data");
-        Item item = null;
+    public Pacote get(Object key) {
+        Pacote pacote = null;
         try{
             conn = Connect.connect();
-            PreparedStatement st = conn.prepareStatement("select * from Items where nome=?");
-            System.out.println("cheguei ao data");
+            PreparedStatement st = conn.prepareStatement("select * from Item where nome=?");
             st.setString(1, (String) key);
             ResultSet rs = st.executeQuery();
             while (rs.next()){
-                item = new Item(rs.getInt("id"), rs.getString("tipo"), rs.getString("nome"), rs.getDouble("preco"), rs.getInt("quantidade"));
+                //pacote = new Pacote(rs.getInt("id"), rs.getString("nome"), rs.getString("desconto"));
             }
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(ItemDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             Connect.close(conn);
         }
-        return item;
+        return pacote;
     }
-    
-    
 
     @Override
-    public Item put(String key, Item value) {
+    public Pacote put(String key, Pacote value) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Item remove(Object key) {
+    public Pacote remove(Object key) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void putAll(Map<? extends String, ? extends Item> m) {
+    public void putAll(Map<? extends String, ? extends Pacote> m) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -93,12 +90,12 @@ public class ItemDAO implements Map<String, Item> {
     }
 
     @Override
-    public Collection<Item> values() {
+    public Collection<Pacote> values() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Set<Entry<String, Item>> entrySet() {
+    public Set<Entry<String, Pacote>> entrySet() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

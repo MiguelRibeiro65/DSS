@@ -5,11 +5,14 @@
  */
 package configuracaoc.Data;
 
+import configuracaoc.Business.Cliente;
 import configuracaoc.Business.Item;
+import configuracaoc.Business.Utilizador;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -20,9 +23,9 @@ import java.util.logging.Logger;
  *
  * @author PedroRibeiro
  */
-public class ItemDAO implements Map<String, Item> {
+public class ClienteDAO implements Map<String, Cliente> {
 
-    Connection conn;
+    private Connection conn;
     
     @Override
     public int size() {
@@ -45,40 +48,72 @@ public class ItemDAO implements Map<String, Item> {
     }
 
     @Override
-    public Item get(Object key) {
+    public Cliente get(Object key) {
         System.out.println("cheguei ao data");
-        Item item = null;
+        Cliente cliente = null;
         try{
             conn = Connect.connect();
-            PreparedStatement st = conn.prepareStatement("select * from Items where nome=?");
+            PreparedStatement st = conn.prepareStatement("select * from Clientes where nome=?");
             System.out.println("cheguei ao data");
             st.setString(1, (String) key);
             ResultSet rs = st.executeQuery();
             while (rs.next()){
-                item = new Item(rs.getInt("id"), rs.getString("tipo"), rs.getString("nome"), rs.getDouble("preco"), rs.getInt("quantidade"));
+                cliente = new Cliente(rs.getInt("id"), rs.getString("nome"), rs.getString("morada"), rs.getString("nif"), rs.getString("contacto"));
             }
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(ItemDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             Connect.close(conn);
         }
-        return item;
+        return cliente;
     }
-    
-    
 
     @Override
-    public Item put(String key, Item value) {
+    public Cliente put(String key, Cliente value) {
+        Cliente c = null;
+        
+        
+        try{
+            System.out.println("44444444");
+            conn = Connect.connect();
+            PreparedStatement st = conn.prepareStatement("insert into Clientes\n"+
+                        "(nome, morada, nif, contacto)\n"+
+                        "values (?, ?, ?, ?)\n"+
+                        "on duplicate key update nome=values(nome), morada=values(morada), nif=values(nif), contacto=values(contacto)", Statement.RETURN_GENERATED_KEYS);
+            st.setString(1, value.getNome());
+            
+            st.setString(2, value.getMorada());
+            st.setString(3, value.getNif());
+            st.setString(4, value.getContacto());
+            
+            st.executeUpdate();
+            System.out.println("4");
+            
+            
+            
+            
+
+            
+            
+
+            
+            c = value;
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(UtilizadorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            Connect.close(conn);
+        }
+        
+        return c;
+    }
+
+    @Override
+    public Cliente remove(Object key) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Item remove(Object key) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void putAll(Map<? extends String, ? extends Item> m) {
+    public void putAll(Map<? extends String, ? extends Cliente> m) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -93,12 +128,12 @@ public class ItemDAO implements Map<String, Item> {
     }
 
     @Override
-    public Collection<Item> values() {
+    public Collection<Cliente> values() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Set<Entry<String, Item>> entrySet() {
+    public Set<Entry<String, Cliente>> entrySet() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

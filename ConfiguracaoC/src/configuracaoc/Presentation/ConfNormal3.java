@@ -7,6 +7,7 @@ package configuracaoc.Presentation;
 
 import configuracaoc.Business.ConfiguraFacil;
 import configuracaoc.Business.Configuracao;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,6 +18,7 @@ public class ConfNormal3 extends javax.swing.JFrame {
     
     ConfiguraFacil cf;
     Configuracao configuracao;
+    private ArrayList<Integer> confitems;
     /**
      * Creates new form ConfNormal3
      */
@@ -24,10 +26,12 @@ public class ConfNormal3 extends javax.swing.JFrame {
         initComponents();
     }
     
-    public ConfNormal3(ConfiguraFacil cf, Configuracao c){
+    public ConfNormal3(ConfiguraFacil cf, Configuracao c, ArrayList<Integer> confitems){
+        
         initComponents();
         this.cf = cf;
         this.configuracao = c;
+        this.confitems = confitems;
     }
 
     /**
@@ -93,7 +97,7 @@ public class ConfNormal3 extends javax.swing.JFrame {
         jLabel3.setText("Pneus");
 
         jantesCB.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
-        jantesCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Escolher-", "17\"", "18\"", "19\"", "20\""  }));
+        jantesCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Escolher-", "17", "18", "19", "20"  }));
 
         pneusCB.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         pneusCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Escolher-", "Continental", "Goodyear", "Michelin", "Bridgestone", "Firestone", "Uniroyal" }));
@@ -187,7 +191,7 @@ public class ConfNormal3 extends javax.swing.JFrame {
     private void retroButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retroButActionPerformed
         // TODO add your handling code here:
         dispose();
-        ConfNormal2 cn2 = new ConfNormal2(cf,configuracao);
+        ConfNormal2 cn2 = new ConfNormal2(cf,configuracao, confitems);
         cn2.setVisible(true);
     }//GEN-LAST:event_retroButActionPerformed
 
@@ -203,12 +207,17 @@ public class ConfNormal3 extends javax.swing.JFrame {
         String jantes = (String) jantesCB.getSelectedItem();
         String pneus = (String) pneusCB.getSelectedItem();
         
+        int idJantes = cf.getItem(jantes);
+        confitems.add(idJantes);
         configuracao.setJantes(jantes);
+        
+        int idPneus = cf.getItem(pneus);
+        confitems.add(idPneus);
         configuracao.setPneus(pneus);
         
         
         dispose();
-        ConfNormal4 cn4 = new ConfNormal4(cf,configuracao);
+        ConfNormal4 cn4 = new ConfNormal4(cf,configuracao,confitems);
         cn4.setVisible(true);
     }//GEN-LAST:event_avancarButActionPerformed
 

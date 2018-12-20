@@ -76,7 +76,7 @@ public class UtilizadorDAO implements Map<String, Utilizador> {
             stm.setString(1, (String)key);
             ResultSet rs = stm.executeQuery();
             if(rs.next()){
-                u = new Utilizador(rs.getString("tipo"), rs.getString("nome"), rs.getString("mail"), rs.getString("username"), rs.getString("password"), rs.getString("contacto"));
+                u = new Utilizador(rs.getInt("id"), rs.getString("tipo"), rs.getString("nome"), rs.getString("mail"), rs.getString("username"), rs.getString("password"), rs.getString("contacto"));
             }
             
         } catch (ClassNotFoundException | SQLException ex) {
@@ -187,7 +187,7 @@ public class UtilizadorDAO implements Map<String, Utilizador> {
             PreparedStatement st = conn.prepareStatement("select * from Utilizadores");
             ResultSet rs = st.executeQuery();
             while(rs.next()){
-                Utilizador u = new Utilizador( rs.getString("tipo"), rs.getString("nome"), rs.getString("mail"), rs.getString("username"), rs.getString("password"), rs.getString("contacto"));
+                Utilizador u = new Utilizador(rs.getInt("id"), rs.getString("tipo"), rs.getString("nome"), rs.getString("mail"), rs.getString("username"), rs.getString("password"), rs.getString("contacto"));
                 utilizadores.add(u);
             }
         } catch (SQLException | ClassNotFoundException ex) {

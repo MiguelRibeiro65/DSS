@@ -11,6 +11,7 @@ package configuracaoc.Business;
  */
 public class Cliente {
     
+    private int id;
     private String nome;
     private String morada;
     private String nif;
@@ -28,6 +29,18 @@ public class Cliente {
         this.morada = morada;
         this.nif= nif;
         this.contacto = contacto;
+    }
+    
+    public Cliente(int id, String nome, String morada, String nif, String contacto){
+        this.id = id;
+        this.nome = nome;
+        this.morada = morada;
+        this.nif= nif;
+        this.contacto = contacto;
+    }
+    
+    public int getID(){
+        return this.id;
     }
     
     public String getNome(){

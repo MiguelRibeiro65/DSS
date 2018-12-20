@@ -19,6 +19,7 @@ public class ConfNormal5 extends javax.swing.JFrame {
     
     private ConfiguraFacil cf;
     private Configuracao configuracao;
+    private ArrayList<Integer> confitems;
     /**
      * Creates new form ConfNormal5
      */
@@ -26,10 +27,11 @@ public class ConfNormal5 extends javax.swing.JFrame {
         initComponents();
     }
     
-    public ConfNormal5(ConfiguraFacil cf, Configuracao c){
+    public ConfNormal5(ConfiguraFacil cf, Configuracao c, ArrayList<Integer> confitems) {
         initComponents();
         this.cf = cf;
         this.configuracao = c;
+        this.confitems = confitems;
     }
 
     /**
@@ -223,7 +225,7 @@ public class ConfNormal5 extends javax.swing.JFrame {
     private void retroButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retroButActionPerformed
         // TODO add your handling code here:
         dispose();
-        ConfNormal4 cn4 = new ConfNormal4(cf, configuracao);
+        ConfNormal4 cn4 = new ConfNormal4(cf, configuracao, confitems);
         cn4.setVisible(true);
     }//GEN-LAST:event_retroButActionPerformed
 
@@ -236,31 +238,29 @@ public class ConfNormal5 extends javax.swing.JFrame {
 
     private void avancarButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avancarButActionPerformed
         // TODO add your handling code here:
-        ArrayList<String> extras = new ArrayList<String>();
+        ArrayList<Integer> extras = new ArrayList<Integer>();
         if(funcTVcheck.isSelected())
-            extras.add(funcTVcheck.getText());
+            confitems.add(cf.getItem("Função de TV"));
         if(consolaTrascheck.isSelected())
-            extras.add(consolaTrascheck.getText());
+            confitems.add(cf.getItem("Consola traseira"));
         if(sistemaSomcheck.isSelected())
-            extras.add(sistemaSomcheck.getText());
+            confitems.add(cf.getItem("Sistema de som Surrond"));
         if(spoilercheck.isSelected())
-            extras.add(spoilercheck.getText());
+            confitems.add(cf.getItem("Spoiler traseiro"));
         if(vidrossolarcheck.isSelected())
-            extras.add(vidrossolarcheck.getText());
+            confitems.add(cf.getItem("Vidros com proteção solar"));
         if(travoesDespCheck.isSelected())
-            extras.add(travoesDespCheck.getText());
+            confitems.add(cf.getItem("Travões desportivos"));
         if(volanteAqCheck.isSelected())
-            extras.add(volanteAqCheck.getText());
+            confitems.add(cf.getItem("Volante aquecido"));
         if(vidrosLaminadosCheck.isSelected())
-            extras.add(vidrosLaminadosCheck.getText());
+            confitems.add(cf.getItem("Vidros laminados"));
         if(escovasCheck.isSelected())
-            extras.add(escovasCheck.getText());
+            confitems.add(cf.getItem("Escovas faróis"));
         
-        configuracao.setExtras(extras);
-        
-        
+
         dispose();
-        ConfNormal6 cn6 = new ConfNormal6(cf,configuracao);
+        ConfNormal6 cn6 = new ConfNormal6(cf,configuracao, confitems);
         cn6.setVisible(true);
     }//GEN-LAST:event_avancarButActionPerformed
 

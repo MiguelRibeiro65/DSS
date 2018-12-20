@@ -23,6 +23,10 @@ public class Configuracao {
     public String pacote;
     public ArrayList<String> extras;
     public double preco;
+    public int utilizador;
+    public int cliente;
+    public int pacoteID = 0;
+    
 
     
     public Configuracao(){
@@ -36,8 +40,26 @@ public class Configuracao {
         this.frisos = null;
         this.pacote = null;
         this.extras = new ArrayList<>();
-        this.preco = preco;
+        this.preco = 0.0;
         
+    }
+    
+    public Configuracao(int utilizador, int cliente){
+        this.utilizador = utilizador;
+        this.cliente = cliente;
+        
+    }
+    
+    public int getUtilizador(){
+        return this.utilizador;
+    }
+    
+    public int getCliente(){
+        return this.cliente;
+    }
+    
+    public int getPacoteID(){
+        return this.pacoteID;
     }
     
     public Configuracao(String modelo, String pintura, String motor, String jantes, String pneus, String estofos, String frisos, String pacote, ArrayList<String> extras, double preco){

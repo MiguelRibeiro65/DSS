@@ -35,6 +35,8 @@ public class ConfNormal extends javax.swing.JFrame {
         this.cf = cf;
         
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -204,7 +206,7 @@ motorCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"-Escolher
     private void cancelOpButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelOpButActionPerformed
         // TODO add your handling code here:
         dispose();
-        FuncHome fh = new FuncHome();
+        FuncHome fh = new FuncHome(cf);
         fh.setVisible(true);
     }//GEN-LAST:event_cancelOpButActionPerformed
 
@@ -218,56 +220,30 @@ motorCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"-Escolher
         String motor = (String) motorCB.getSelectedItem();
         System.out.println("li os textfields");
         
-        
+        int idModelo = cf.getItem(modelo);
+        items.add(idModelo);
         configuracao.setModelo(modelo);
-        cf.getItem(modelo);
         
-        
+        int idPintura = cf.getItem(pintura);
+        items.add(idPintura);
         configuracao.setPintura(pintura);
+        
+        int idMotor = cf.getItem(motor);
+        items.add(idMotor);
         configuracao.setMotor(motor);
         System.out.println("atualizei");
 
         
-        
+        System.out.println("adicionei aos items");
         dispose();
-        ConfNormal2 cn2 = new ConfNormal2(cf, configuracao);
+        ConfNormal2 cn2 = new ConfNormal2(cf, configuracao, items);
         cn2.setVisible(true);
     }//GEN-LAST:event_avancarButActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConfNormal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConfNormal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConfNormal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConfNormal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ConfNormal().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton avancarBut;

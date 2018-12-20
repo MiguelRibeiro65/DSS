@@ -7,6 +7,7 @@ package configuracaoc.Presentation;
 
 import configuracaoc.Business.ConfiguraFacil;
 import configuracaoc.Business.Configuracao;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,6 +17,7 @@ public class ConfNormal2 extends javax.swing.JFrame {
     
     private ConfiguraFacil cf;
     private Configuracao configuracao;
+    private ArrayList<Integer> confitems;
     /**
      * Creates new form ConfNormal2
      */
@@ -23,10 +25,11 @@ public class ConfNormal2 extends javax.swing.JFrame {
         initComponents();
     }
     
-    public ConfNormal2(ConfiguraFacil cf, Configuracao c) {
+    public ConfNormal2(ConfiguraFacil cf, Configuracao c, ArrayList<Integer> confitems) {
         initComponents();
         this.cf = cf;
         this.configuracao = c;
+        this.confitems = confitems;
     }
 
     /**
@@ -182,9 +185,9 @@ public class ConfNormal2 extends javax.swing.JFrame {
     private void avancButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avancButActionPerformed
         // TODO add your handling code here:
         String pacote = (String) pacoteCB.getSelectedItem();
-        configuracao.setPacote(pacote);
+        //configuracao.setPacote(pacote);
         dispose();
-        ConfNormal3 cn3 = new ConfNormal3(cf, configuracao);
+        ConfNormal3 cn3 = new ConfNormal3(cf, configuracao, confitems);
         cn3.setVisible(true);
     }//GEN-LAST:event_avancButActionPerformed
 

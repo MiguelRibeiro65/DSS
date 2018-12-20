@@ -6,6 +6,7 @@
 package configuracaoc.Business;
 
 
+import configuracaoc.Data.ClienteDAO;
 import configuracaoc.Data.ConfiguracaoDAO;
 import configuracaoc.Data.ItemDAO;
 import configuracaoc.Data.UtilizadorDAO;
@@ -25,11 +26,16 @@ public class ConfiguraFacil {
     private ConfiguracaoDAO configuracaoDAO;
     private UtilizadorDAO utilizadoresDAO;
     private ItemDAO itemDAO;
+    private ClienteDAO clientesDAO;
+    
     
     public ConfiguraFacil(){
         
         this.utilizadoresDAO = new UtilizadorDAO();
+        this.itemDAO = new ItemDAO();
         this.sessao = null;
+        this.clientesDAO = new ClienteDAO();
+        this.configuracaoDAO = new ConfiguracaoDAO();
     }
     
     public Utilizador getSessao(){
@@ -45,18 +51,29 @@ public class ConfiguraFacil {
             if(isPW == 1){
                  tipo = u.getTipo();
             }
-           
+        sessao = u;    
         }
         return tipo;
     }
     
     public Utilizador getDados(String mail){
         Utilizador u;
+        
         u = utilizadoresDAO.get(mail);
         return u;
     }
     
+    public Cliente getCliente(String mail){
+        Cliente c;
+        
+        c = clientesDAO.get(mail);
+        return c;
+    }
     
+    public int getUserID(String mail){
+        Utilizador u = utilizadoresDAO.get(mail);
+        return u.getID();
+    }
     
     public ArrayList<Utilizador> getUsers(){
         return (ArrayList<Utilizador>) utilizadoresDAO.values();
@@ -81,21 +98,38 @@ public class ConfiguraFacil {
         
     }
     
-    public Item getItem(String nome){
-        Item i = itemDAO.get(nome);
-        return i;
+    public void adicionarConfiguracao(int utilizador, Cliente cliente){
+        Configuracao c = new Configuracao(utilizador, getClienteID(cliente.getNif()));
+        System.out.println("adicionarConfiguracao");
+        configuracaoDAO.put(cliente.getNome(), c);
+    }
+
+    
+    public int getItem(String nome){
+        
+        Item item = itemDAO.get(nome);
+        int itemID = item.getID();
+
+        return itemID;
         
     }
     
+    public int getClienteID(String nif){
+        
+        Cliente cliente = clientesDAO.get(nif);
+        int clienteID = cliente.getID();
+
+        return clienteID;
+        
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    public void adicionarCliente(String nome, String morada, String nif, String contacto) {
+        Cliente c = new Cliente(nome, morada, nif, contacto);
+        //String newID = Integer.toString(id);
+        //String username = u.getUsername();
+        System.out.println("4");
+        clientesDAO.put(nome, c);
+        
+    }  
     
 }

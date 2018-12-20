@@ -25,7 +25,7 @@ import java.util.logging.Logger;
  *
  * @author PedroRibeiro
  */
-public class ConfiguracaoDAO implements Map<String, ConfiguracaoNormal>{
+public class ConfiguracaoDAO implements Map<String, Configuracao>{
 
     private Connection conn;
     @Override
@@ -54,8 +54,40 @@ public class ConfiguracaoDAO implements Map<String, ConfiguracaoNormal>{
     }
 
     @Override
-    public ConfiguracaoNormal put(String key, ConfiguracaoNormal value) {
-        return null;
+    public Configuracao put(String key, Configuracao value) {
+        System.out.println("DAO");
+        Configuracao c = null;
+        
+        try{
+            System.out.println("4");
+            conn = Connect.connect();
+            PreparedStatement st = conn.prepareStatement("insert ignore into Configuracao\n"+
+                        "(Utilizadores_id, Clientes_id, Pacotes_id)\n"+
+                        "values (?, ?, ?)");
+                        //"on duplicate key update t=values(tipo), nome=values(nome), username=values(username), password=values(password), contacto=values(contacto)", Statement.RETURN_GENERATED_KEYS);
+            st.setInt(1, value.getUtilizador());
+            st.setInt(2, value.getCliente());
+            st.setInt(3, value.getPacoteID());
+    
+            st.executeUpdate();
+            System.out.println("4");
+            
+            
+            
+            
+
+            
+            
+
+            
+            c = value;
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(ConfiguracaoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            Connect.close(conn);
+        }
+        
+        return c;
         
     }
 
@@ -65,7 +97,7 @@ public class ConfiguracaoDAO implements Map<String, ConfiguracaoNormal>{
     }
 
     @Override
-    public void putAll(Map<? extends String, ? extends ConfiguracaoNormal> m) {
+    public void putAll(Map<? extends String, ? extends Configuracao> m) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -80,7 +112,7 @@ public class ConfiguracaoDAO implements Map<String, ConfiguracaoNormal>{
     }
 
     @Override
-    public Collection<ConfiguracaoNormal> values() {
+    public Collection<Configuracao> values() {
         return null;
         /*ArrayList<ConfiguracaoNormal> listaConfiguracoes = new ArrayList<ConfiguracaoNormal>();
         try{
@@ -101,7 +133,7 @@ public class ConfiguracaoDAO implements Map<String, ConfiguracaoNormal>{
     }
 
     @Override
-    public Set<Entry<String, ConfiguracaoNormal>> entrySet() {
+    public Set<Entry<String, Configuracao>> entrySet() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

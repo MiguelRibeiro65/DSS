@@ -35,8 +35,18 @@ public class Utilizador {
         this.contacto = null;
     }
     
+    public Utilizador(int id, String tipo, String nome, String mail, String username, String password, String contacto){
+        this.id = id;
+        this.tipo = tipo;
+        this.nome = nome;
+        this.mail = mail;
+        this.username = username;
+        this.password = password;
+        this.contacto = contacto;
+    }
+    
     public Utilizador(String tipo, String nome, String mail, String username, String password, String contacto){
-        //this.id = id;
+        
         this.tipo = tipo;
         this.nome = nome;
         this.mail = mail;

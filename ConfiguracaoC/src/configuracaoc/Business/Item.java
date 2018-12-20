@@ -19,16 +19,14 @@ public class Item {
     private String nome;
     private int quantidade;
     private double preco;
-    private ArrayList<String> itemsIncompativeis; 
-    private ArrayList<String> itemsObrigatorios;
+    
 
     public Item() {
         this.id = 0;
         this.tipo = null;
         this.nome = null;
         this.quantidade = 0;
-        this.itemsIncompativeis = new ArrayList<String>();
-        this.itemsObrigatorios = new ArrayList<String>();
+        
         
     }
     
@@ -40,6 +38,11 @@ public class Item {
         this.preco = preco;
         //this.itemsIncompativeis = itemsIncompativeis;
         //this.itemsObrigatorios = itemsObrigatorios;
+    }
+    
+    public int getID(){
+        
+        return this.id;
     }
     
     

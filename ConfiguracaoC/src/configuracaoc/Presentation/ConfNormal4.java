@@ -8,6 +8,7 @@ package configuracaoc.Presentation;
 import configuracaoc.Business.ConfiguraFacil;
 import configuracaoc.Business.Configuracao;
 import configuracaoc.Business.ConfiguracaoNormal;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,6 +18,7 @@ public class ConfNormal4 extends javax.swing.JFrame {
     
     private ConfiguraFacil cf;
     private Configuracao configuracao;
+    private ArrayList<Integer> confitems;
     /**
      * Creates new form ConfNormal4
      */
@@ -24,10 +26,11 @@ public class ConfNormal4 extends javax.swing.JFrame {
         initComponents();
     }
     
-    public ConfNormal4(ConfiguraFacil cf, Configuracao c) {
+    public ConfNormal4(ConfiguraFacil cf, Configuracao c, ArrayList<Integer> confitems) {
         initComponents();
         this.cf = cf;
         this.configuracao = c;
+        this.confitems = confitems;
         
     }
 
@@ -193,7 +196,7 @@ public class ConfNormal4 extends javax.swing.JFrame {
     private void retroButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retroButActionPerformed
         // TODO add your handling code here:
         dispose();
-        ConfNormal3 cn3 = new ConfNormal3(cf,configuracao);
+        ConfNormal3 cn3 = new ConfNormal3(cf,configuracao, confitems);
         cn3.setVisible(true);
     }//GEN-LAST:event_retroButActionPerformed
 
@@ -202,11 +205,16 @@ public class ConfNormal4 extends javax.swing.JFrame {
         String estofos = (String) estofosCB.getSelectedItem();
         String frisos = (String) frisosCB.getSelectedItem();
         
+        int idEstofos = cf.getItem(estofos);
+        confitems.add(idEstofos);
         configuracao.setEstofos(estofos);
+        
+        int idFrisos = cf.getItem(frisos);
+        confitems.add(idFrisos);
         configuracao.setFrisos(frisos);
         
         dispose();
-        ConfNormal5 cn5 = new ConfNormal5(cf,configuracao);
+        ConfNormal5 cn5 = new ConfNormal5(cf,configuracao, confitems);
         cn5.setVisible(true);
     }//GEN-LAST:event_avancarButActionPerformed
 

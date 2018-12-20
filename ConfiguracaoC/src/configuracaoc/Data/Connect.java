@@ -19,7 +19,7 @@ public class Connect {
     private static final String URL = "localhost";
     private static final String DB = "mydb";
     private static final String USERNAME = "root";
-    private static final String PASSWORD = "16abril1994";
+    private static final String PASSWORD = "root";
     
     public static Connection connect() throws SQLException, ClassNotFoundException{
         Class.forName("com.mysql.jdbc.Driver");

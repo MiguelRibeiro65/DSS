@@ -8,6 +8,7 @@ package configuracaoc.Presentation;
 import configuracaoc.Business.Cliente;
 import configuracaoc.Business.ConfiguraFacil;
 import configuracaoc.Business.Configuracao;
+import java.util.ArrayList;
 
 /**
  *
@@ -17,6 +18,7 @@ public class ConfNormal6 extends javax.swing.JFrame {
     private ConfiguraFacil cf;
     private Configuracao configuracao;
     private Cliente cliente = new Cliente();
+    private ArrayList<Integer> confitems;
     /**
      * Creates new form ConfNormal6
      */
@@ -24,10 +26,11 @@ public class ConfNormal6 extends javax.swing.JFrame {
         initComponents();
     }
     
-    public ConfNormal6(ConfiguraFacil cf, Configuracao c){
+    public ConfNormal6(ConfiguraFacil cf, Configuracao c, ArrayList<Integer> confitems){
         initComponents();
         this.cf = cf;
         this.configuracao = c;
+        this.confitems = confitems;
     }
 
     /**
@@ -200,7 +203,7 @@ public class ConfNormal6 extends javax.swing.JFrame {
     private void retroButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retroButActionPerformed
         // TODO add your handling code here:
         dispose();
-        ConfNormal5 cn5 = new ConfNormal5(cf, configuracao);
+        ConfNormal5 cn5 = new ConfNormal5(cf, configuracao, confitems);
         cn5.setVisible(true);
     }//GEN-LAST:event_retroButActionPerformed
 
@@ -217,7 +220,7 @@ public class ConfNormal6 extends javax.swing.JFrame {
         cliente.setNif(nif);
         
         dispose();
-        ConfNormal7 cn7 = new ConfNormal7(cf,configuracao, cliente);
+        ConfNormal7 cn7 = new ConfNormal7(cf,configuracao, confitems ,cliente);
         cn7.setVisible(true);
     }//GEN-LAST:event_avancarButActionPerformed
 

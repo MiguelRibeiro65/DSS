@@ -8,6 +8,7 @@ package configuracaoc.Presentation;
 import configuracaoc.Business.Cliente;
 import configuracaoc.Business.ConfiguraFacil;
 import configuracaoc.Business.Configuracao;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,6 +19,7 @@ public class ConfNormal7 extends javax.swing.JFrame {
     private ConfiguraFacil cf;
     private Configuracao configuracao;
     private Cliente cliente;
+    private ArrayList<Integer> confitems;
     /**
      * Creates new form ConfNormal7
      */
@@ -25,7 +27,7 @@ public class ConfNormal7 extends javax.swing.JFrame {
         initComponents();
     }
     
-    public ConfNormal7(ConfiguraFacil cf, Configuracao c, Cliente cliente){
+    public ConfNormal7(ConfiguraFacil cf, Configuracao c, ArrayList<Integer> confitems, Cliente cliente){
         initComponents();
         
         modeloL.setText(c.getModelo());
@@ -39,6 +41,7 @@ public class ConfNormal7 extends javax.swing.JFrame {
         this.cf = cf;
         this.configuracao = c;
         this.cliente = cliente;
+        this.confitems = confitems;
     }
 
     /**
@@ -245,13 +248,16 @@ public class ConfNormal7 extends javax.swing.JFrame {
     private void retroButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retroButActionPerformed
         // TODO add your handling code here:
         dispose();
-        ConfNormal6 cn6 = new ConfNormal6(cf,configuracao);
+        ConfNormal6 cn6 = new ConfNormal6(cf,configuracao, confitems);
         cn6.setVisible(true);
     }//GEN-LAST:event_retroButActionPerformed
 
     private void finalizarButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finalizarButActionPerformed
         // TODO add your handling code here:
-        //adicionarConfiguracao(cn);
+        //adicionarConfiguracao(cn);    
+        cf.adicionarCliente(cliente.getNome(), cliente.getMorada(), cliente.getNif(), cliente.getContacto());
+        Cliente newC = cf.getCliente(cliente.getNome());
+        cf.adicionarConfiguracao(cf.getUserID(cf.getSessao().getMail()), newC);
         dispose();
         ConfNormal8 cn8 = new ConfNormal8(cf);
         cn8.setVisible(true); 

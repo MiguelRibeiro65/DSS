@@ -200,7 +200,7 @@
               <Font name="Century Gothic" size="13" style="0"/>
             </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;-Escolher-&quot;, &quot;17\&quot;&quot;, &quot;18\&quot;&quot;, &quot;19\&quot;&quot;, &quot;20\&quot;&quot;  })" type="code"/>
+              <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;-Escolher-&quot;, &quot;17&quot;, &quot;18&quot;, &quot;19&quot;, &quot;20&quot;  })" type="code"/>
             </Property>
           </Properties>
           <AuxValues>

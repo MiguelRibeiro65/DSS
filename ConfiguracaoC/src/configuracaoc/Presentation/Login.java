@@ -7,21 +7,9 @@ package configuracaoc.Presentation;
 
 
 import configuracaoc.Business.ConfiguraFacil;
-
-
 import configuracaoc.Business.Utilizador;
-import configuracaoc.Data.Connect;
-import java.awt.Frame;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
-
-
 /**
  *
  * @author PedroRibeiro
@@ -68,7 +56,7 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setText("Mail");
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 48)); // NOI18N
-        jLabel2.setText("ConfiguraçãoRápida");
+        jLabel2.setText("ConfiguraFácil");
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         jLabel3.setText("Password");
@@ -119,7 +107,7 @@ public class Login extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(135, Short.MAX_VALUE))
+                .addContainerGap(246, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

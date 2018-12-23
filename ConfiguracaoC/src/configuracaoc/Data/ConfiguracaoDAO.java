@@ -6,7 +6,8 @@
 package configuracaoc.Data;
 
 import configuracaoc.Business.Configuracao;
-import configuracaoc.Business.ConfiguracaoNormal;
+
+import configuracaoc.Business.Pacote;
 import configuracaoc.Business.Utilizador;
 import configuracaoc.Presentation.ConfNormal;
 import java.sql.Connection;
@@ -49,25 +50,25 @@ public class ConfiguracaoDAO implements Map<String, Configuracao>{
     }
 
     @Override
-    public ConfiguracaoNormal get(Object key) {
+    public Configuracao get(Object key) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public Configuracao put(String key, Configuracao value) {
-        System.out.println("DAO");
         Configuracao c = null;
         
         try{
             System.out.println("4");
             conn = Connect.connect();
-            PreparedStatement st = conn.prepareStatement("insert ignore into Configuracao\n"+
+            PreparedStatement st = conn.prepareStatement("insert into Configuracao\n"+
                         "(Utilizadores_id, Clientes_id, Pacotes_id)\n"+
-                        "values (?, ?, ?)");
-                        //"on duplicate key update t=values(tipo), nome=values(nome), username=values(username), password=values(password), contacto=values(contacto)", Statement.RETURN_GENERATED_KEYS);
+                        "values (?, ?, ?)\n"+
+                        "on duplicate key update Utilizadores_id=values(Utilizadores_id), Clientes_id=values(Clientes_id), Pacotes_id=values(Pacotes_id)", Statement.RETURN_GENERATED_KEYS);
             st.setInt(1, value.getUtilizador());
             st.setInt(2, value.getCliente());
-            st.setInt(3, value.getPacoteID());
+            Pacote p = value.getPacote();
+            st.setInt(3, p.getID());
     
             st.executeUpdate();
             System.out.println("4");
@@ -92,7 +93,7 @@ public class ConfiguracaoDAO implements Map<String, Configuracao>{
     }
 
     @Override
-    public ConfiguracaoNormal remove(Object key) {
+    public Configuracao remove(Object key) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -113,23 +114,21 @@ public class ConfiguracaoDAO implements Map<String, Configuracao>{
 
     @Override
     public Collection<Configuracao> values() {
-        return null;
-        /*ArrayList<ConfiguracaoNormal> listaConfiguracoes = new ArrayList<ConfiguracaoNormal>();
-        try{
+        ArrayList<Configuracao> configuracoes = new ArrayList<Configuracao>();
+        try {
             conn = Connect.connect();
-            PreparedStatement st = conn.prepareStatement("select * from Configuracoes");
+            PreparedStatement st = conn.prepareStatement("select * from Configuracao");
             ResultSet rs = st.executeQuery();
             while(rs.next()){
-                ConfiguracaoNormal confN = new ConfNormal(rs.getString("tipo"), rs.getString("nome"), rs.getDouble("preco"), rs.getInt("quantidade"));
+                Configuracao c = new Configuracao(rs.getInt("id"), rs.getInt("Utilizadores_id"), rs.getInt("Clientes_id"), rs.getInt("Pacotes_id"));
+                configuracoes.add(c);
             }
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(ConfiguracaoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UtilizadorDAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             Connect.close(conn);
         }
-        
-        return listaConfiguracoes;
-*/
+        return configuracoes;
     }
 
     @Override

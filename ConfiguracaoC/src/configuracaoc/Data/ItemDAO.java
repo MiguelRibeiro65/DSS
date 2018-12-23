@@ -6,10 +6,12 @@
 package configuracaoc.Data;
 
 import configuracaoc.Business.Item;
+import configuracaoc.Business.Utilizador;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -94,12 +96,40 @@ public class ItemDAO implements Map<String, Item> {
 
     @Override
     public Collection<Item> values() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        ArrayList<Item> items = new ArrayList<Item>();
+        try {
+            conn = Connect.connect();
+            PreparedStatement st = conn.prepareStatement("select * from Items");
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                Item i = new Item(rs.getInt("id"), rs.getString("tipo"), rs.getString("nome"), rs.getDouble("preco"), rs.getInt("quantidade"));
+                items.add(i);
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(UtilizadorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            Connect.close(conn);
+        }
+        return items;
     }
 
     @Override
     public Set<Entry<String, Item>> entrySet() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public void updateItem(String nome, int quantidade){
+        try{
+            conn = Connect.connect();
+            PreparedStatement st = conn.prepareStatement("update Items set quantidade = quantidade+? where nome=?");
+            st.setInt(1, quantidade);
+            st.setString(2, nome);
+            st.executeUpdate();
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(ItemDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            Connect.close(conn);
+        }
     }
     
 }

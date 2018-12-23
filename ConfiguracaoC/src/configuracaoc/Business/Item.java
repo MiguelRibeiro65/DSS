@@ -19,15 +19,12 @@ public class Item {
     private String nome;
     private int quantidade;
     private double preco;
-    
 
     public Item() {
         this.id = 0;
         this.tipo = null;
         this.nome = null;
-        this.quantidade = 0;
-        
-        
+        this.quantidade = 0;  
     }
     
     public Item(int id, String tipo, String nome, double preco, int quantidade){
@@ -36,13 +33,26 @@ public class Item {
         this.nome = nome;
         this.quantidade = quantidade;
         this.preco = preco;
-        //this.itemsIncompativeis = itemsIncompativeis;
-        //this.itemsObrigatorios = itemsObrigatorios;
     }
     
     public int getID(){
-        
         return this.id;
+    }
+    
+    public String getTipo(){
+        return this.tipo;
+    }
+    
+    public String getNome(){
+        return this.nome;
+    }
+    
+    public double getPreco(){
+        return this.preco;
+    }
+    
+    public int getQuantidade(){
+        return this.quantidade;
     }
     
     

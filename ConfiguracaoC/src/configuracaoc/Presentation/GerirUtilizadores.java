@@ -243,7 +243,6 @@ public class GerirUtilizadores extends javax.swing.JFrame {
     private void remButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_remButActionPerformed
         // TODO add your handling code here:
         //tableUtilizadores.getSelectedRow();
-        System.out.println("cheguei ao gerirutilizadores");
         dispose();
         JDialog ru = new RemoverUtilizadorD(this,true,cf);
         ru.setVisible(true);

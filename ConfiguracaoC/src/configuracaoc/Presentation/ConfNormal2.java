@@ -7,6 +7,7 @@ package configuracaoc.Presentation;
 
 import configuracaoc.Business.ConfiguraFacil;
 import configuracaoc.Business.Configuracao;
+import configuracaoc.Business.Pacote;
 import java.util.ArrayList;
 
 /**
@@ -18,6 +19,7 @@ public class ConfNormal2 extends javax.swing.JFrame {
     private ConfiguraFacil cf;
     private Configuracao configuracao;
     private ArrayList<Integer> confitems;
+    
     /**
      * Creates new form ConfNormal2
      */
@@ -48,8 +50,6 @@ public class ConfNormal2 extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         pacoteCB = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ConfiguraFácil");
@@ -92,12 +92,6 @@ public class ConfNormal2 extends javax.swing.JFrame {
         pacoteCB.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         pacoteCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Escolher-", "Desportivo M", "Confort", "Line Luxury", "Line Advantage", "Line Urban" }));
 
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel4.setText("preco");
-
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel3.setText("€");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -120,16 +114,9 @@ public class ConfNormal2 extends javax.swing.JFrame {
                         .addComponent(pacoteCB, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(66, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(cancelOpBut)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34))))
+                .addContainerGap(416, Short.MAX_VALUE)
+                .addComponent(cancelOpBut)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,11 +129,7 @@ public class ConfNormal2 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(pacoteCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(avancBut, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(retrocBut, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -171,23 +154,28 @@ public class ConfNormal2 extends javax.swing.JFrame {
     private void retrocButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retrocButActionPerformed
         // TODO add your handling code here:
         dispose();
-        ConfNormal cn = new ConfNormal();
+        ConfNormal cn = new ConfNormal(cf, confitems);
         cn.setVisible(true);
     }//GEN-LAST:event_retrocButActionPerformed
 
     private void cancelOpButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelOpButActionPerformed
         // TODO add your handling code here:
         dispose();
-        FuncHome fh = new FuncHome();
+        FuncHome fh = new FuncHome(cf);
         fh.setVisible(true);
     }//GEN-LAST:event_cancelOpButActionPerformed
 
     private void avancButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avancButActionPerformed
         // TODO add your handling code here:
+        Pacote p = new Pacote();
         String pacote = (String) pacoteCB.getSelectedItem();
-        //configuracao.setPacote(pacote);
+        if(!"-Escolher-".equals(pacote)){
+            p = cf.getPacote(pacote);
+            configuracao.setPacoteString(pacote);
+        }
+
         dispose();
-        ConfNormal3 cn3 = new ConfNormal3(cf, configuracao, confitems);
+        ConfNormal3 cn3 = new ConfNormal3(cf, configuracao, confitems, p);
         cn3.setVisible(true);
     }//GEN-LAST:event_avancButActionPerformed
 
@@ -201,8 +189,6 @@ public class ConfNormal2 extends javax.swing.JFrame {
     private javax.swing.JButton cancelOpBut;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> pacoteCB;
     private javax.swing.JButton retrocBut;

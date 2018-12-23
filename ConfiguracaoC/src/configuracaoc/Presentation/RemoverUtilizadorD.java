@@ -6,7 +6,6 @@
 package configuracaoc.Presentation;
 
 import configuracaoc.Business.ConfiguraFacil;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 

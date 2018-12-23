@@ -5,7 +5,12 @@
  */
 package configuracaoc.Presentation;
 
+import configuracaoc.Business.ConfiguraFacil;
+import configuracaoc.Business.Pacote;
+import configuracaoc.Business.Utilizador;
 import configuracaoc.Presentation.RemoverPacote;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,11 +18,37 @@ import configuracaoc.Presentation.RemoverPacote;
  */
 public class GerirPacotesConf extends javax.swing.JFrame {
 
+    private ConfiguraFacil cf;
+    private DefaultTableModel table;
     /**
      * Creates new form GerirPacotesConf
      */
     public GerirPacotesConf() {
         initComponents();
+    }
+    
+    public GerirPacotesConf(ConfiguraFacil cf){
+        initComponents();
+        this.cf = cf;
+        doTable();
+    }
+    
+    public void doTable() {
+        String colunas[] = {"ID", "Nome", "Desconto"};
+        table = new DefaultTableModel(colunas,0);
+        
+        pacotesTable.setModel(table);
+        
+        ArrayList<Pacote> pacotes = cf.getPacotes();
+        for(Pacote p : pacotes){
+            int id = p.getID();
+            String nome = p.getNome();
+            String desconto = p.getDesconto();
+            
+            table.addRow(new Object[]{id, nome, desconto});
+            
+        }
+        
     }
 
     /**
@@ -33,7 +64,7 @@ public class GerirPacotesConf extends javax.swing.JFrame {
         logoutBut = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        tablePacotes = new javax.swing.JTable();
+        pacotesTable = new javax.swing.JTable();
         menuPrincipalBut = new javax.swing.JButton();
         adicionarPacBut = new javax.swing.JButton();
         removerPacBut = new javax.swing.JButton();
@@ -57,8 +88,8 @@ public class GerirPacotesConf extends javax.swing.JFrame {
 
         jScrollPane2.setBackground(new java.awt.Color(85, 174, 255));
 
-        tablePacotes.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        tablePacotes.setModel(new javax.swing.table.DefaultTableModel(
+        pacotesTable.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        pacotesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -79,8 +110,8 @@ public class GerirPacotesConf extends javax.swing.JFrame {
                 "ID", "Pacote", "Preço", "Desconto(%)"
             }
         ));
-        tablePacotes.setSelectionForeground(new java.awt.Color(85, 174, 255));
-        jScrollPane2.setViewportView(tablePacotes);
+        pacotesTable.setSelectionForeground(new java.awt.Color(85, 174, 255));
+        jScrollPane2.setViewportView(pacotesTable);
 
         menuPrincipalBut.setBackground(new java.awt.Color(254, 198, 61));
         menuPrincipalBut.setFont(new java.awt.Font("Century Gothic", 1, 13)); // NOI18N
@@ -123,7 +154,7 @@ public class GerirPacotesConf extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 467, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 538, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(menuPrincipalBut)
@@ -145,12 +176,17 @@ public class GerirPacotesConf extends javax.swing.JFrame {
                         .addComponent(jLabel1)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(menuPrincipalBut, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(adicionarPacBut, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(removerPacBut, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(adicionarPacBut, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(removerPacBut, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(menuPrincipalBut, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -171,15 +207,13 @@ public class GerirPacotesConf extends javax.swing.JFrame {
     private void logoutButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButActionPerformed
         // TODO add your handling code here:
         dispose();
-        Login login = new Login();
+        Login login = new Login(cf);
         login.setVisible(true);
     }//GEN-LAST:event_logoutButActionPerformed
 
     private void menuPrincipalButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPrincipalButActionPerformed
         // TODO add your handling code here:
         dispose();
-        AdminHome admin = new AdminHome();
-        admin.setVisible(true);
     }//GEN-LAST:event_menuPrincipalButActionPerformed
 
     private void removerPacButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerPacButActionPerformed
@@ -199,37 +233,7 @@ public class GerirPacotesConf extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GerirPacotesConf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GerirPacotesConf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GerirPacotesConf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GerirPacotesConf.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GerirPacotesConf().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adicionarPacBut;
@@ -238,8 +242,8 @@ public class GerirPacotesConf extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton logoutBut;
     private javax.swing.JButton menuPrincipalBut;
+    private javax.swing.JTable pacotesTable;
     private javax.swing.JButton removerPacBut;
-    private javax.swing.JTable tablePacotes;
     // End of variables declaration//GEN-END:variables
 }
 

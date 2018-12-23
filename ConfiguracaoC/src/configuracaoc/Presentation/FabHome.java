@@ -26,7 +26,7 @@ public class FabHome extends javax.swing.JFrame {
         this.cf = cf;
     }
     
-    public FabHome(ConfiguraFacil cf, String nome, String mail, String contacto){
+    public FabHome(ConfiguraFacil cf, String nome, String mail, String contacto) {
         initComponents();
         this.cf = cf;
         
@@ -47,11 +47,13 @@ public class FabHome extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        logoutBut = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         nomeLabel = new javax.swing.JLabel();
         mailLabel = new javax.swing.JLabel();
         contactLabel = new javax.swing.JLabel();
+        confiDependentesBut = new javax.swing.JButton();
+        addComponenteBut = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ConfiguraFácil");
@@ -63,9 +65,14 @@ public class FabHome extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 36)); // NOI18N
         jLabel1.setText("ConfiguraFácil");
 
-        jButton1.setBackground(new java.awt.Color(85, 174, 255));
-        jButton1.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
-        jButton1.setText("Logout");
+        logoutBut.setBackground(new java.awt.Color(85, 174, 255));
+        logoutBut.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
+        logoutBut.setText("Logout");
+        logoutBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButActionPerformed(evt);
+            }
+        });
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/configuracaoc/Presentation/lowicon.png"))); // NOI18N
 
@@ -78,49 +85,73 @@ public class FabHome extends javax.swing.JFrame {
         contactLabel.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         contactLabel.setText("Contacto");
 
+        confiDependentesBut.setBackground(new java.awt.Color(153, 204, 255));
+        confiDependentesBut.setFont(new java.awt.Font("Century Gothic", 1, 13)); // NOI18N
+        confiDependentesBut.setText("Configurações Pendentes");
+        confiDependentesBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confiDependentesButActionPerformed(evt);
+            }
+        });
+
+        addComponenteBut.setBackground(new java.awt.Color(153, 204, 255));
+        addComponenteBut.setFont(new java.awt.Font("Century Gothic", 1, 13)); // NOI18N
+        addComponenteBut.setText("Adicionar componentes");
+        addComponenteBut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addComponenteButActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap(522, Short.MAX_VALUE)
-                        .addComponent(jButton1))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(logoutBut))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(46, 46, 46)
-                                .addComponent(jLabel1))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(44, 44, 44)
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(mailLabel)
-                                    .addComponent(nomeLabel)
-                                    .addComponent(contactLabel))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel1)))
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(43, 43, 43)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mailLabel)
+                    .addComponent(nomeLabel)
+                    .addComponent(contactLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(confiDependentesBut, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(addComponenteBut, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(38, 38, 38))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(logoutBut)
                 .addGap(2, 2, 2)
                 .addComponent(jLabel1)
-                .addGap(26, 26, 26)
+                .addGap(37, 37, 37)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(nomeLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(mailLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(contactLabel))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(confiDependentesBut, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nomeLabel, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(mailLabel)
+                                .addGap(8, 8, 8)
+                                .addComponent(contactLabel))
+                            .addComponent(addComponenteBut, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel2))
-                .addContainerGap(140, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -145,52 +176,45 @@ public class FabHome extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(617, 398));
+        setSize(new java.awt.Dimension(617, 346));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void confiDependentesButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confiDependentesButActionPerformed
+        // TODO add your handling code here:
+        
+        
+        ConfiguracoesPendentes cp = new ConfiguracoesPendentes(cf);
+        cp.setVisible(true);
+    }//GEN-LAST:event_confiDependentesButActionPerformed
+
+    private void addComponenteButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addComponenteButActionPerformed
+        // TODO add your handling code here:\
+        AdicionarComponente ac = new AdicionarComponente(cf);
+        ac.setVisible(true);
+    }//GEN-LAST:event_addComponenteButActionPerformed
+
+    private void logoutButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButActionPerformed
+        // TODO add your handling code here:
+        dispose();
+        Login login = new Login(cf);
+        login.setVisible(true);
+    }//GEN-LAST:event_logoutButActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FabHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FabHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FabHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FabHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FabHome().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addComponenteBut;
+    private javax.swing.JButton confiDependentesBut;
     private javax.swing.JLabel contactLabel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton logoutBut;
     private javax.swing.JLabel mailLabel;
     private javax.swing.JLabel nomeLabel;
     // End of variables declaration//GEN-END:variables

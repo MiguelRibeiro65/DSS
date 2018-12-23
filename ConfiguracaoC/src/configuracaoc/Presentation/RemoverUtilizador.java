@@ -6,10 +6,7 @@
 package configuracaoc.Presentation;
 
 import configuracaoc.Business.ConfiguraFacil;
-import configuracaoc.Presentation.ConfirmRemU;
-import configuracaoc.Presentation.GerirUtilizadores;
 import javax.swing.JDialog;
-
 /**
  *
  * @author PedroRibeiro

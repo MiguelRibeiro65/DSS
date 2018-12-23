@@ -7,7 +7,8 @@ package configuracaoc.Presentation;
 
 import configuracaoc.Business.ConfiguraFacil;
 import configuracaoc.Business.Configuracao;
-import configuracaoc.Business.ConfiguracaoNormal;
+import configuracaoc.Business.Pacote;
+
 import java.util.ArrayList;
 
 /**
@@ -19,6 +20,7 @@ public class ConfNormal4 extends javax.swing.JFrame {
     private ConfiguraFacil cf;
     private Configuracao configuracao;
     private ArrayList<Integer> confitems;
+    private Pacote pacote;
     /**
      * Creates new form ConfNormal4
      */
@@ -26,12 +28,12 @@ public class ConfNormal4 extends javax.swing.JFrame {
         initComponents();
     }
     
-    public ConfNormal4(ConfiguraFacil cf, Configuracao c, ArrayList<Integer> confitems) {
+    public ConfNormal4(ConfiguraFacil cf, Configuracao c, ArrayList<Integer> confitems, Pacote pacote) {
         initComponents();
         this.cf = cf;
         this.configuracao = c;
         this.confitems = confitems;
-        
+        this.pacote = pacote;
     }
 
     /**
@@ -50,8 +52,6 @@ public class ConfNormal4 extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         estofosCB = new javax.swing.JComboBox<>();
         frisosCB = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         retroBut = new javax.swing.JButton();
         avancarBut = new javax.swing.JButton();
 
@@ -83,12 +83,6 @@ public class ConfNormal4 extends javax.swing.JFrame {
 
         frisosCB.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         frisosCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Escolher-", "Prata Satin mate", "Alumínio Escovado", "Alumínio Hexagon", "Branco Acrílico" }));
-
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel4.setText("preco");
-
-        jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel5.setText("€");
 
         retroBut.setBackground(new java.awt.Color(254, 198, 61));
         retroBut.setFont(new java.awt.Font("Century Gothic", 1, 13)); // NOI18N
@@ -122,12 +116,6 @@ public class ConfNormal4 extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(22, 442, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(165, 165, 165)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -160,11 +148,7 @@ public class ConfNormal4 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(frisosCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(avancarBut, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                     .addComponent(retroBut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -189,14 +173,14 @@ public class ConfNormal4 extends javax.swing.JFrame {
     private void cancelOpButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelOpButActionPerformed
         // TODO add your handling code here:
         dispose();
-        FuncHome fh = new FuncHome();
+        FuncHome fh = new FuncHome(cf);
         fh.setVisible(true);
     }//GEN-LAST:event_cancelOpButActionPerformed
 
     private void retroButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retroButActionPerformed
         // TODO add your handling code here:
         dispose();
-        ConfNormal3 cn3 = new ConfNormal3(cf,configuracao, confitems);
+        ConfNormal3 cn3 = new ConfNormal3(cf,configuracao, confitems, pacote);
         cn3.setVisible(true);
     }//GEN-LAST:event_retroButActionPerformed
 
@@ -214,44 +198,14 @@ public class ConfNormal4 extends javax.swing.JFrame {
         configuracao.setFrisos(frisos);
         
         dispose();
-        ConfNormal5 cn5 = new ConfNormal5(cf,configuracao, confitems);
+        ConfNormal5 cn5 = new ConfNormal5(cf,configuracao, confitems, pacote);
         cn5.setVisible(true);
     }//GEN-LAST:event_avancarButActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConfNormal4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConfNormal4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConfNormal4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConfNormal4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ConfNormal4().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton avancarBut;
@@ -261,8 +215,6 @@ public class ConfNormal4 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton retroBut;
     // End of variables declaration//GEN-END:variables

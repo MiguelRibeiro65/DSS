@@ -168,7 +168,7 @@ public class FuncHome extends javax.swing.JFrame {
 
     private void confNormalButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confNormalButActionPerformed
         // TODO add your handling code here:
-        dispose();
+        
         ConfNormal cn = new ConfNormal(cf);
         cn.setVisible(true);
     }//GEN-LAST:event_confNormalButActionPerformed

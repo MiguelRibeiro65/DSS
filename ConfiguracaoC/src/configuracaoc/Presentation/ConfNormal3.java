@@ -7,6 +7,7 @@ package configuracaoc.Presentation;
 
 import configuracaoc.Business.ConfiguraFacil;
 import configuracaoc.Business.Configuracao;
+import configuracaoc.Business.Pacote;
 import java.util.ArrayList;
 
 /**
@@ -19,6 +20,7 @@ public class ConfNormal3 extends javax.swing.JFrame {
     ConfiguraFacil cf;
     Configuracao configuracao;
     private ArrayList<Integer> confitems;
+    private Pacote pacote;
     /**
      * Creates new form ConfNormal3
      */
@@ -26,12 +28,13 @@ public class ConfNormal3 extends javax.swing.JFrame {
         initComponents();
     }
     
-    public ConfNormal3(ConfiguraFacil cf, Configuracao c, ArrayList<Integer> confitems){
+    public ConfNormal3(ConfiguraFacil cf, Configuracao c, ArrayList<Integer> confitems, Pacote pacote){
         
         initComponents();
         this.cf = cf;
         this.configuracao = c;
         this.confitems = confitems;
+        this.pacote = pacote;
     }
 
     /**
@@ -52,8 +55,6 @@ public class ConfNormal3 extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jantesCB = new javax.swing.JComboBox<>();
         pneusCB = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ConfiguraFácil");
@@ -102,12 +103,6 @@ public class ConfNormal3 extends javax.swing.JFrame {
         pneusCB.setFont(new java.awt.Font("Century Gothic", 0, 13)); // NOI18N
         pneusCB.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-Escolher-", "Continental", "Goodyear", "Michelin", "Bridgestone", "Firestone", "Uniroyal" }));
 
-        jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel4.setText("preco");
-
-        jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel5.setText("€");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -138,13 +133,7 @@ public class ConfNormal3 extends javax.swing.JFrame {
                                 .addComponent(retroBut)
                                 .addGap(242, 242, Short.MAX_VALUE)
                                 .addComponent(avancarBut, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(77, 77, 77))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(23, 23, 23)))))
+                                .addGap(77, 77, 77)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -162,11 +151,7 @@ public class ConfNormal3 extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(pneusCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(avancarBut, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(retroBut, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -217,7 +202,7 @@ public class ConfNormal3 extends javax.swing.JFrame {
         
         
         dispose();
-        ConfNormal4 cn4 = new ConfNormal4(cf,configuracao,confitems);
+        ConfNormal4 cn4 = new ConfNormal4(cf,configuracao,confitems, pacote);
         cn4.setVisible(true);
     }//GEN-LAST:event_avancarButActionPerformed
 
@@ -232,8 +217,6 @@ public class ConfNormal3 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> jantesCB;
     private javax.swing.JComboBox<String> pneusCB;

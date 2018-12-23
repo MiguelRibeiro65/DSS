@@ -8,7 +8,6 @@ package configuracaoc.Data;
 
 
 import configuracaoc.Business.Utilizador;
-import java.awt.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +15,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
@@ -29,9 +27,7 @@ import java.util.logging.Logger;
 public class UtilizadorDAO implements Map<String, Utilizador> {
 
     private Connection conn;
-    
-    
-    
+
     @Override
     public int size() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -72,7 +68,6 @@ public class UtilizadorDAO implements Map<String, Utilizador> {
         try {
             conn = Connect.connect();
             PreparedStatement stm = conn.prepareStatement("select * from Utilizadores where mail=?");
-            //stm.setString(1, "func");
             stm.setString(1, (String)key);
             ResultSet rs = stm.executeQuery();
             if(rs.next()){
@@ -107,15 +102,7 @@ public class UtilizadorDAO implements Map<String, Utilizador> {
             st.setString(6, value.getContacto());
             st.executeUpdate();
             System.out.println("4");
-            
-            
-            
-            
 
-            
-            
-
-            
             u = value;
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(UtilizadorDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -129,26 +116,18 @@ public class UtilizadorDAO implements Map<String, Utilizador> {
 
     //@Override
     public Utilizador remove(Object key) {
-        System.out.println("estou no data");
         Utilizador usr = this.get(key);
         try {
-           
             conn = Connect.connect();
             PreparedStatement st = conn.prepareStatement("delete from Utilizadores where username=?");
-            //int i = Integer.parseInt((String) key);
-            System.out.println("tou aqui??");
             st.setString(1,(String) key);
             st.executeUpdate();
             
-            
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(UtilizadorDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-            
-        finally {
+        } finally {
             Connect.close(conn);
         } 
-        
         return usr;
     }
 
@@ -164,12 +143,9 @@ public class UtilizadorDAO implements Map<String, Utilizador> {
             PreparedStatement st = conn.prepareStatement("delete from Utilizadores where id>0");
             st.executeUpdate();
             
-        }   
-        catch (SQLException | ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(UtilizadorDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        finally {
+        } finally {
             Connect.close(conn);
         }
     }

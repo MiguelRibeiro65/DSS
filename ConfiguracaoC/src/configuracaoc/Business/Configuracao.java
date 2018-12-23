@@ -13,6 +13,8 @@ import java.util.ArrayList;
  */
 public class Configuracao {
     
+    public int id;
+    
     public String modelo;
     public String pintura;
     public String motor;
@@ -20,12 +22,16 @@ public class Configuracao {
     public String pneus;
     public String estofos;
     public String frisos;
-    public String pacote;
     public ArrayList<String> extras;
     public double preco;
-    public int utilizador;
-    public int cliente;
-    public int pacoteID = 0;
+    public String pacoteString;
+    
+    
+    public int utilizadorID;
+    public int clienteID;
+    public Pacote pacote;
+    
+    public int pacoteID;
     
 
     
@@ -41,28 +47,46 @@ public class Configuracao {
         this.pacote = null;
         this.extras = new ArrayList<>();
         this.preco = 0.0;
+        this.pacoteString = null;
+        
+        
         
     }
     
-    public Configuracao(int utilizador, int cliente){
-        this.utilizador = utilizador;
-        this.cliente = cliente;
-        
+    public Configuracao(int utilizador, int cliente, Pacote pacote){
+        this.utilizadorID = utilizador;
+        this.clienteID = cliente;
+        this.pacote = pacote;
+    }
+    
+    public Configuracao(int id, int utilizador, int cliente, int pacoteID){
+        this.id = id;
+        this.utilizadorID = utilizador;
+        this.clienteID = cliente;
+        this.pacoteID = pacoteID;
+    }
+    
+    public int getID(){
+        return this.id;
     }
     
     public int getUtilizador(){
-        return this.utilizador;
+        return this.utilizadorID;
     }
     
     public int getCliente(){
-        return this.cliente;
+        return this.clienteID;
+    }
+    
+    public Pacote getPacote(){
+        return this.pacote;
     }
     
     public int getPacoteID(){
         return this.pacoteID;
     }
     
-    public Configuracao(String modelo, String pintura, String motor, String jantes, String pneus, String estofos, String frisos, String pacote, ArrayList<String> extras, double preco){
+    public Configuracao(String modelo, String pintura, String motor, String jantes, String pneus, String estofos, String frisos, Pacote pacote, ArrayList<String> extras, double preco, String pacoteString){
         this.modelo = modelo;
         this.pintura = pintura;
         this.motor = motor;
@@ -73,6 +97,7 @@ public class Configuracao {
         this.pacote = pacote;
         this.extras = extras;
         this.preco = preco;
+        this.pacoteString = pacoteString;
     }
     
     public Configuracao(Configuracao c){
@@ -100,9 +125,7 @@ public class Configuracao {
         return this.motor;
     }
     
-    public String getPacote(){
-        return this.pacote;
-    }
+    
     
     public String getJantes(){
         return this.jantes;
@@ -157,15 +180,15 @@ public class Configuracao {
         this.frisos = frisos;
     }
     
-    public void setPacote(String pacote){
-        this.pacote = pacote;
-    }
-    
     public void setExtras(ArrayList<String> extras){
         this.extras = extras;
     }
     
     public void setPreco(double preco){
         this.preco = preco;
+    }
+    
+    public void setPacoteString(String pacote){
+        this.pacoteString = pacote;
     }
 }

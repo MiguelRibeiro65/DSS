@@ -54,12 +54,6 @@ insert into Items (id, tipo, nome, preco, quantidade) values (20, 'motor', 'STRA
 insert into Items (id, tipo, nome, preco, quantidade) values (21, 'motor', 'VR and W',2000, 3);
 insert into Items (id, tipo, nome, preco, quantidade) values (22, 'motor', 'BOXER',4570, 5);
 
-insert into Items (id, tipo, nome, preco, quantidade) values (23, 'pacote', 'Desportivo M',5600, 5);
-insert into Items (id, tipo, nome, preco, quantidade) values (24, 'pacote', 'Confort',4570, 4);
-insert into Items (id, tipo, nome, preco, quantidade) values (25, 'pacote', 'Line Luxury',7800, 3);
-insert into Items (id, tipo, nome, preco, quantidade) values (26, 'pacote', 'Line Advantage',4700, 7);
-insert into Items (id, tipo, nome, preco, quantidade) values (27, 'pacote', 'Line Urban',3200, 7);
-
 insert into Items (id, tipo, nome, preco, quantidade) values (28, 'jantes', '17', 1200, 7);
 insert into Items (id, tipo, nome, preco, quantidade) values (29, 'jantes', '18', 1400, 7);
 insert into Items (id, tipo, nome, preco, quantidade) values (30, 'jantes', '19', 1600, 7);
@@ -94,9 +88,11 @@ insert into Items (id, tipo, nome, preco, quantidade) values (54, 'extras', 'Vol
 insert into Items (id, tipo, nome, preco, quantidade) values (55, 'extras', 'Vidros laminados',700, 7);
 insert into Items (id, tipo, nome, preco, quantidade) values (56, 'extras', 'Escovas faróis',700, 7);
 
-
-
-
+insert into Pacotes (id, nome, desconto) values (1, 'Desportivo M', '14');
+insert into Pacotes (id, nome, desconto) values (2, 'Confort', '14');
+insert into Pacotes (id, nome, desconto) values (3, 'Line Luxury', '14');
+insert into Pacotes (id, nome, desconto) values (4, 'Line Advantage', '14');
+insert into Pacotes (id, nome, desconto) values (5, 'Line Urban', '14');
 
 
 

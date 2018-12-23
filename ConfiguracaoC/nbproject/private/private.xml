@@ -5,25 +5,18 @@
             <url>src/configuracaoc/Business/ConfiguraFacil.java</url>
             <bookmark id="1">
                 <name/>
-                <line>103</line>
+                <line>102</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/PedroRibeiro/NetBeansProjects/ConfiguracaoC/src/configuracaoc/Presentation/AdicionarUtilizador.java</file>
             <file>file:/Users/PedroRibeiro/NetBeansProjects/ConfiguracaoC/src/configuracaoc/Business/ConfiguraFacil.java</file>
-            <file>file:/Users/PedroRibeiro/NetBeansProjects/ConfiguracaoC/src/configuracaoc/Presentation/ConfNormal7.java</file>
-            <file>file:/Users/PedroRibeiro/NetBeansProjects/ConfiguracaoC/src/configuracaoc/Data/ConfiguracaoDAO.java</file>
-            <file>file:/Users/PedroRibeiro/NetBeansProjects/ConfiguracaoC/src/configuracaoc/Presentation/ConfirmAddU.java</file>
-            <file>file:/Users/PedroRibeiro/NetBeansProjects/ConfiguracaoC/src/configuracaoc/Presentation/ConfNormal2.java</file>
-            <file>file:/Users/PedroRibeiro/NetBeansProjects/ConfiguracaoC/src/configuracaoc/Data/ClienteDAO.java</file>
-            <file>file:/Users/PedroRibeiro/NetBeansProjects/ConfiguracaoC/src/configuracaoc/Business/Item.java</file>
-            <file>file:/Users/PedroRibeiro/NetBeansProjects/ConfiguracaoC/src/configuracaoc/Business/Cliente.java</file>
+            <file>file:/Users/PedroRibeiro/NetBeansProjects/ConfiguracaoC/src/configuracaoc/Presentation/ErroLogin.java</file>
+            <file>file:/Users/PedroRibeiro/NetBeansProjects/ConfiguracaoC/src/configuracaoc/Presentation/GerirUtilizadores.java</file>
             <file>file:/Users/PedroRibeiro/NetBeansProjects/ConfiguracaoC/src/configuracaoc/Data/UtilizadorDAO.java</file>
-            <file>file:/Users/PedroRibeiro/NetBeansProjects/ConfiguracaoC/src/configuracaoc/Business/Utilizador.java</file>
-            <file>file:/Users/PedroRibeiro/NetBeansProjects/ConfiguracaoC/src/configuracaoc/Presentation/ConfNormal.java</file>
+            <file>file:/Users/PedroRibeiro/NetBeansProjects/ConfiguracaoC/src/configuracaoc/Presentation/Login.java</file>
         </group>
     </open-files>
 </project-private>

@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -50,11 +51,11 @@ public class PacoteDAO implements Map<String, Pacote> {
         Pacote pacote = null;
         try{
             conn = Connect.connect();
-            PreparedStatement st = conn.prepareStatement("select * from Item where nome=?");
+            PreparedStatement st = conn.prepareStatement("select * from Pacotes where nome=?");
             st.setString(1, (String) key);
             ResultSet rs = st.executeQuery();
             while (rs.next()){
-                //pacote = new Pacote(rs.getInt("id"), rs.getString("nome"), rs.getString("desconto"));
+                pacote = new Pacote(rs.getInt("id"), rs.getString("nome"), rs.getString("desconto"));
             }
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(ItemDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -91,7 +92,21 @@ public class PacoteDAO implements Map<String, Pacote> {
 
     @Override
     public Collection<Pacote> values() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+         ArrayList<Pacote> pacotes = new ArrayList<Pacote>();
+        try {
+            conn = Connect.connect();
+            PreparedStatement st = conn.prepareStatement("select * from Pacotes");
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                Pacote p = new Pacote(rs.getInt("id"), rs.getString("nome"), rs.getString("desconto"));
+                pacotes.add(p);
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(UtilizadorDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            Connect.close(conn);
+        }
+        return pacotes;
     }
 
     @Override

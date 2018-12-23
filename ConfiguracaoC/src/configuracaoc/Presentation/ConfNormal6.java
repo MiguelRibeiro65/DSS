@@ -8,6 +8,7 @@ package configuracaoc.Presentation;
 import configuracaoc.Business.Cliente;
 import configuracaoc.Business.ConfiguraFacil;
 import configuracaoc.Business.Configuracao;
+import configuracaoc.Business.Pacote;
 import java.util.ArrayList;
 
 /**
@@ -19,6 +20,7 @@ public class ConfNormal6 extends javax.swing.JFrame {
     private Configuracao configuracao;
     private Cliente cliente = new Cliente();
     private ArrayList<Integer> confitems;
+    private Pacote pacote;
     /**
      * Creates new form ConfNormal6
      */
@@ -26,11 +28,12 @@ public class ConfNormal6 extends javax.swing.JFrame {
         initComponents();
     }
     
-    public ConfNormal6(ConfiguraFacil cf, Configuracao c, ArrayList<Integer> confitems){
+    public ConfNormal6(ConfiguraFacil cf, Configuracao c, ArrayList<Integer> confitems, Pacote pacote){
         initComponents();
         this.cf = cf;
         this.configuracao = c;
         this.confitems = confitems;
+        this.pacote = pacote;
     }
 
     /**
@@ -196,14 +199,14 @@ public class ConfNormal6 extends javax.swing.JFrame {
     private void cancelOpButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelOpButActionPerformed
         // TODO add your handling code here:
         dispose();
-        FuncHome fh = new FuncHome();
+        FuncHome fh = new FuncHome(cf);
         fh.setVisible(true);
     }//GEN-LAST:event_cancelOpButActionPerformed
 
     private void retroButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retroButActionPerformed
         // TODO add your handling code here:
         dispose();
-        ConfNormal5 cn5 = new ConfNormal5(cf, configuracao, confitems);
+        ConfNormal5 cn5 = new ConfNormal5(cf, configuracao, confitems, pacote);
         cn5.setVisible(true);
     }//GEN-LAST:event_retroButActionPerformed
 
@@ -220,7 +223,7 @@ public class ConfNormal6 extends javax.swing.JFrame {
         cliente.setNif(nif);
         
         dispose();
-        ConfNormal7 cn7 = new ConfNormal7(cf,configuracao, confitems ,cliente);
+        ConfNormal7 cn7 = new ConfNormal7(cf,configuracao, confitems ,cliente, pacote);
         cn7.setVisible(true);
     }//GEN-LAST:event_avancarButActionPerformed
 

@@ -7,8 +7,9 @@ package configuracaoc.Presentation;
 
 import configuracaoc.Business.ConfiguraFacil;
 import configuracaoc.Business.Configuracao;
-import configuracaoc.Business.ConfiguracaoNormal;
+
 import configuracaoc.Business.Item;
+import configuracaoc.Business.Pacote;
 import java.util.ArrayList;
 
 /**
@@ -20,6 +21,7 @@ public class ConfNormal5 extends javax.swing.JFrame {
     private ConfiguraFacil cf;
     private Configuracao configuracao;
     private ArrayList<Integer> confitems;
+    private Pacote pacote;
     /**
      * Creates new form ConfNormal5
      */
@@ -27,11 +29,12 @@ public class ConfNormal5 extends javax.swing.JFrame {
         initComponents();
     }
     
-    public ConfNormal5(ConfiguraFacil cf, Configuracao c, ArrayList<Integer> confitems) {
+    public ConfNormal5(ConfiguraFacil cf, Configuracao c, ArrayList<Integer> confitems, Pacote pacote) {
         initComponents();
         this.cf = cf;
         this.configuracao = c;
         this.confitems = confitems;
+        this.pacote = pacote;
     }
 
     /**
@@ -57,8 +60,6 @@ public class ConfNormal5 extends javax.swing.JFrame {
         escovasCheck = new javax.swing.JCheckBox();
         retroBut = new javax.swing.JButton();
         avancarBut = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ConfiguraFácil");
@@ -122,12 +123,6 @@ public class ConfNormal5 extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel2.setText("€");
-
-        jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel3.setText("preco");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -167,12 +162,6 @@ public class ConfNormal5 extends javax.swing.JFrame {
                                 .addComponent(jLabel1)
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,11 +185,7 @@ public class ConfNormal5 extends javax.swing.JFrame {
                     .addComponent(sistemaSomcheck)
                     .addComponent(travoesDespCheck)
                     .addComponent(escovasCheck))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(retroBut, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(avancarBut, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -225,7 +210,7 @@ public class ConfNormal5 extends javax.swing.JFrame {
     private void retroButActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_retroButActionPerformed
         // TODO add your handling code here:
         dispose();
-        ConfNormal4 cn4 = new ConfNormal4(cf, configuracao, confitems);
+        ConfNormal4 cn4 = new ConfNormal4(cf, configuracao, confitems, pacote);
         cn4.setVisible(true);
     }//GEN-LAST:event_retroButActionPerformed
 
@@ -260,7 +245,7 @@ public class ConfNormal5 extends javax.swing.JFrame {
         
 
         dispose();
-        ConfNormal6 cn6 = new ConfNormal6(cf,configuracao, confitems);
+        ConfNormal6 cn6 = new ConfNormal6(cf,configuracao, confitems, pacote);
         cn6.setVisible(true);
     }//GEN-LAST:event_avancarButActionPerformed
 
@@ -306,8 +291,6 @@ public class ConfNormal5 extends javax.swing.JFrame {
     private javax.swing.JCheckBox escovasCheck;
     private javax.swing.JCheckBox funcTVcheck;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton retroBut;
     private javax.swing.JCheckBox sistemaSomcheck;
